@@ -6,22 +6,22 @@ A small C++ solver for quasi-static electrical conduction in a cube, using P1 te
 
 The total current and its conservation are given by
 
-\[
+$$
 J=J_p-\sigma\nabla\phi, \qquad \nabla\cdot J=0
-\]
+$$
 
 For an insulated domain, \(n\cdot J=0\). The corresponding weak formulation is
 
-\[
+$$
 \int_\Omega\sigma\nabla\phi\cdot\nabla v\,dx
 =\int_\Omega J_p\cdot\nabla v\,dx
-\]
+$$
 
 On each tetrahedron, the basis functions are linear, and we assemble
 
-\[
+$$
 K^T_{ij}=|T|\sigma\nabla N_i\cdot\nabla N_j
-\]
+$$
 
 The Neumann matrix is singular: we set the potential at the first node to zero, then solve the reduced system using the conjugate gradient method.
 
@@ -93,13 +93,13 @@ Examples:
 
 The `primaire` mode uses a smooth, localized current that vanishes on the faces of the cube. The `manufacture` mode uses the known solution
 
-\[
+$$
 \phi(x,y,z)=10^{-3}\cos(\pi x/L)\cos(\pi y/L)\cos(\pi z/L)
-\]
+$$
 
-with \(-\nabla\cdot(\sigma\nabla\phi)=f\), \(f=3\sigma(\pi/L)^2\phi\) and \(\nabla\phi\cdot n=0\), to observe how the nodal RMS error decreases as the mesh is refined. The right-hand side is integrated using four quadrature points per tetrahedron; this quadrature is not exact for the trigonometric function.
+with $-\nabla\cdot(\sigma\nabla\phi)=f$, $=3\sigma(\pi/L)^2\phi$ and $\nabla\phi\cdot n=0$, to observe how the nodal RMS error decreases as the mesh is refined. The right-hand side is integrated using four quadrature points per tetrahedron; this quadrature is not exact for the trigonometric function.
 
-In `champs.csv`, the `primaire` mode exports the total current \(J_p-\sigma\nabla\phi_h\). The `manufacture` mode only exports the conduction current \(-\sigma\nabla\phi_h\), associated with the volume source \(f\).
+In `champs.csv`, the `primaire` mode exports the total current $J_p-\sigma\nabla\phi_h$. The `manufacture` mode only exports the conduction current $-\sigma\nabla\phi_h$, associated with the volume source $f$.
 
 The exported electric fields are constant on each P1 tetrahedron, and the reconstructed current is not locally conservative in the strong sense.
 
