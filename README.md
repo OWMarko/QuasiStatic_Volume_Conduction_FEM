@@ -102,7 +102,3 @@ with $-\nabla\cdot(\sigma\nabla\phi)=f$, $=3\sigma(\pi/L)^2\phi$ and $\nabla\phi
 In `champs.csv`, the `primaire` mode exports the total current $J_p-\sigma\nabla\phi_h$. The `manufacture` mode only exports the conduction current $-\sigma\nabla\phi_h$, associated with the volume source $f$.
 
 The exported electric fields are constant on each P1 tetrahedron, and the reconstructed current is not locally conservative in the strong sense.
-
-## License
-
-MIT, see `LICENSE`.
